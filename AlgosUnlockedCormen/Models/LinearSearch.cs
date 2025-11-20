@@ -2,20 +2,36 @@
 public class LinearSearch{
 
 public int findMatch(string title)                
-  {
-     // return the index if the item is found
-     // return -1 if it is not found
-      for (int i = 0; i < bookTitles.Length; i++) 
-      { 
-          if (bookTitles[i].ToLower() == title.ToLower()) 
-          { 
-              return i; 
-          } 
-   
-      } 
-      return -1; 
-  }
+{
+  // return the index if the item is found
+  // return -1 if it is not found
+   for (int i = 0; i < bookTitles.Length; i++) 
+   { 
+       if (bookTitles[i].ToLower() == title.ToLower()) 
+       { 
+           return i; 
+       } 
 
+   } 
+   return -1; 
+}
+
+public int findMatchSentinel(string title){
+
+   int i = 0;
+   // saving value of lastIndex for ease of use
+   int lastIndex = bookTitles.Length -1;
+   Console.WriteLine($"There are {bookTitles.Length} titles & lastIndex is {lastIndex}");
+   // save last bookTitle into last var
+   var last = bookTitles[lastIndex];
+   bookTitles[lastIndex] = title;
+   while (bookTitles[i].ToLower() != title.ToLower()){ ++i; }
+   bookTitles[lastIndex] = last;
+   if (i < lastIndex || bookTitles[i].ToLower() == title.ToLower()){
+      return i;
+   }
+   return -1;
+}
     string[] bookTitles = new string[]
    {
        // Frank L. Baum - Oz series
