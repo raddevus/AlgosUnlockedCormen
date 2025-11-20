@@ -6,15 +6,16 @@ public class LinearSearchTests
     public void TestFindMatchNoMatch()
     {
       LinearSearch ls = new();
-      var result = ls.findMatch("the wizard of oz") > -1 ? "found": "not found";
+      var searchText =  "the wizard of oz";
+      var result = ls.findMatch(searchText) > -1 ? $"FOUND => {searchText}": $"NOT found => {searchText}";
       Console.WriteLine($"Search result: {result}");
     }
 
     [Fact]
     public void TestFindMatchSentinel(){
       LinearSearch ls = new();
-          
-      var result = ls.findMatchSentinel("the wonderful wizard of oz") > -1 ? "found": "not found";
+      var searchText =  "the wonderful wizard of oz";
+      var result = ls.findMatchSentinel(searchText) > -1 ? $"FOUND => {searchText}": $"NOT found => {searchText}";
       Console.WriteLine($"Search result: {result}");
     }
 }
